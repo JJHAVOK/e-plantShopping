@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ProductList from './ProductList';
 import './App.css';
 import AboutUs from './AboutUs';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   
