@@ -1,337 +1,374 @@
 /* LandingPage.css */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Old Layout Styles (Preserved) --- */
+.landing-page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f8f8f8;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://cdn.pixabay.com/photo/2017/07/13/08/59/greenhouse-2499758_1280.jpg');
+  background-size: 100% 100%;
+  background-position: center;
+  filter: brightness(0.8);
+}
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+ top: 100px;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0,0,0,0.5);
+  gap: 20px;
+}
+
+.landing_content {
+ margin-top: 430px;
+  margin-left: 100px;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.content p,
+.content h1 {
+  color: white;
+}
+
+.content h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.content p {
+  font-size: 25px;
+}
+
+.divider {
+  width: 50px;
+  height: 2px;
+  background-color: rgb(70 120 163); 
+  margin: 10px 0;
+}
+/* --- Home Container (Current Active Home View) --- */
+.home-container {
+  min-height: 100vh;
+  width: 100%;
   
-  /* --- Old Layout Styles (Preserved) --- */
-  .landing-page {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-color: #f8f8f8;
-  }
+  display: flex;
+  /* Use flex properties here to center the entire layout block */
+  justify-content: center; 
+  align-items: center;
   
-  .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://cdn.pixabay.com/photo/2017/07/13/08/59/greenhouse-2499758_1280.jpg');
-    background-size: 100% 100%;
-    background-position: center;
-    filter: brightness(0.8);
-  }
-  .content {
+  color: white; 
+}
+
+/* --- NEW: Layout for Alignment Left (3-Column Grid) --- */
+.home-layout {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-   top: 100px;
-    backdrop-filter: blur(4px);
-    background-color: rgba(0,0,0,0.5);
-    gap: 20px;
-  }
-  
-  .landing_content {
-   margin-top: 430px;
-    margin-left: 100px;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    text-align: center;
-    width: 400px;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  .content p,
-  .content h1 {
-    color: white;
-  }
-  
-  .content h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
-  }
-  
-  .content p {
-    font-size: 25px;
-  }
-  
-  .divider {
-    width: 50px;
-    height: 2px;
-    background-color: rgb(70 120 163); 
-    margin: 10px 0;
-  }
-  /* --- Home Container (Current Active Home View) --- */
-  .home-container {
-    min-height: 100vh;
-    width: 100%;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    
-    color: white; 
-  }
-  
-  .home-heading {
-    font-size: 4em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-  }
-  
-  .home-tagline {
-    font-size: 1.5em;
-    margin-bottom: 30px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-  }
-  
-  /* --- Primary Blue Color Scheme (rgb(70 120 163)) --- */
-  
-  .get-started-button, .product-button, 
-  .cart-item-button-inc, .cart-item-button-dec,
-  .continue_shopping_btn button:not(.get-started-button1) {
-    background-color: rgb(70 120 163) !important; /* Blue primary color */
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.5em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .get-started-button:hover, .product-button:hover {
-    background-color: rgb(60 110 150) !important;
-  }
-  
-  /* --- Modal Overlay Styles (for Products and Cart) --- */
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal-content {
-    /* No top padding here. Padding is managed by the sticky header. */
-    background-color: white;
-    padding: 0 20px 20px 20px; 
-    border-radius: 8px;
-    position: relative;
-    width: 95%; 
+    width: 80%; /* Constrain the layout width */
     max-width: 1200px; 
-    height: 95%;
-    overflow-y: auto; 
+    padding: 20px;
+    
+    /* Ensure content is readable over the background */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.home-content-left {
+    flex: 0 0 45%; /* Takes up 45% of the layout width */
+    text-align: left; /* Aligns text left */
+}
+
+.home-divider-center {
+    height: 150px; /* Short height for the divider */
+    width: 2px;
+    background-color: white;
+    margin: 0 5%; /* Space between left/right content */
+}
+
+.home-content-right {
+    flex: 0 0 45%; /* Takes up 45% of the layout width */
+    text-align: left; /* Placeholder text aligns left */
+    font-size: 1.1em;
+}
+
+
+.home-heading {
+  font-size: 4em;
+  /* Removed text-shadow here as it's applied to home-layout */
+}
+
+.home-tagline {
+  font-size: 1.5em;
+  margin-bottom: 30px;
+}
+
+/* --- Primary Blue Color Scheme (rgb(70 120 163)) --- */
+
+.get-started-button, .product-button, 
+.cart-item-button-inc, .cart-item-button-dec,
+.continue_shopping_btn button:not(.get-started-button1) {
+  background-color: rgb(70 120 163) !important; /* Blue primary color */
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.get-started-button:hover, .product-button:hover {
+  background-color: rgb(60 110 150) !important;
+}
+
+/* --- Modal Overlay Styles (for Products and Cart) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 0 20px 20px 20px; 
+  border-radius: 8px;
+  position: relative;
+  width: 95%; 
+  max-width: 1200px; 
+  height: 95%;
+  overflow-y: auto; 
+}
+
+/* X close button styling and positioning */
+.modal-close-btn {
+    position: absolute;
+    top: 15px; 
+    right: 20px;
+    background-color: white; 
+    border: 1px solid rgb(70 120 163); 
+    border-radius: 4px;
+    font-size: 1.5em; 
+    line-height: 1;
+    padding: 2px 8px;
+    cursor: pointer;
+    color: rgb(70 120 163); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
+    z-index: 1010;
+}
+
+.modal-close-btn:hover {
+    background-color: rgb(70 120 163);
+    color: white;
+}
+
+/* --- PRODUCT NAVBAR STYLES (STICKY HEADER FIX) --- */
+.product-list-wrapper {
+    width: 100%;
+}
+
+.product-sticky-header {
+    position: sticky;
+    top: 0; 
+    z-index: 10;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    padding: 0 20px; 
+}
+
+/* Main Navbar adjustments */
+.product-navbar-main {
+    position: relative; 
+    padding: 15px 0; 
+}
+
+/* NAV RIGHT CONTAINER FIX: Create space for X button */
+.product-navbar-main .nav-right-container {
+    width: 1100px; 
+}
+
+/* Ensure the cart icon is pushed slightly */
+.cart-icon-container {
+    margin-right: 10px;
+}
+
+/* --- CATEGORY SUBMENU STYLES (STICKY) --- */
+.category-submenu {
+    position: sticky; 
+    top: 60px; 
+    background-color: #f0f0f0; 
+    border-bottom: 1px solid #ddd;
+    z-index: 9; 
+    
+    padding: 10px 20px;
+}
+
+.submenu-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.submenu-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.submenu-link:hover {
+    background-color: #ddd;
+    color: rgb(70 120 163);
+}
+
+/* --- Product Layout and Shadow Fixes (3-column enforcement) --- */
+
+.product-grid {
+    padding: 20px 20px; 
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 16px; 
+    justify-content: flex-start;
+}
+
+.product-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px; 
+    
+    height: 400px; 
+    
+    /* Forces 3 columns by setting max width to 1/3 minus the gap */
+    flex: 0 0 calc(33.333% - 10.666px); 
+    max-width: calc(33.333% - 10.666px);
+    box-sizing: border-box;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.product-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.product-card .product-image {
+    width: 100%;
+    height: 150px; 
+    object-fit: cover; 
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.product-card .product-description {
+    font-size: 0.9em;
+    color: #555;
+    flex-grow: 1; 
+    margin-bottom: 10px;
+}
+
+/* --- Old ProductList.css Rules (Integrated for cleanup) --- */
+.product-list-container {
+  z-index: 2;
+  overflow-y: auto;
+}
+
+/* --- Media Queries (Preserved & Adjusted for Layout Fix) --- */
+
+@media screen and (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
   }
-  
-  /* X close button styling and positioning */
-  .modal-close-btn {
-      position: absolute;
-      top: 15px; 
-      right: 20px;
-      background-color: white; 
-      border: 1px solid rgb(70 120 163); 
-      border-radius: 4px;
-      font-size: 1.5em; 
-      line-height: 1;
-      padding: 2px 8px;
-      cursor: pointer;
-      color: rgb(70 120 163); 
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      transition: all 0.2s;
-      z-index: 1010;
-  }
-  
-  .modal-close-btn:hover {
-      background-color: rgb(70 120 163);
-      color: white;
-  }
-  
-  /* --- PRODUCT NAVBAR STYLES (STICKY HEADER FIX) --- */
-  .product-list-wrapper {
-      width: 100%;
-  }
-  
-  .product-sticky-header {
-      position: sticky;
-      top: 0; 
-      z-index: 10;
-      margin: 0 -20px; /* Counter modal-content padding for full width */
-      background-color: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-  }
-  
-  /* Main Navbar adjustments */
-  .product-navbar-main {
-      position: relative; 
-      padding: 15px 20px; 
-  }
-  
-  /* NAV RIGHT CONTAINER FIX: Create space for X button */
-  .product-navbar-main .nav-right-container {
-      width: 1100px; 
-      /* This padding is the source of the horizontal shift. Setting it to auto manages space better. */
-      /* REMOVED: padding-right: 60px; */ 
-      
-      /* Ensure the cart section is pushed left to make space for the X button */
-      /* Using justify-content: flex-end in the nav-right-container's parent is ideal, but here we fix spacing */
-  }
-  
-  /* Ensure the cart icon is pushed slightly */
-  .cart-icon-container {
-      margin-right: 60px;
-  }
-  
-  /* --- CATEGORY SUBMENU STYLES (STICKY) --- */
-  .category-submenu {
-      position: sticky; 
-      top: 60px; /* Position it right below the main navbar (~60px tall) */
-      background-color: #f0f0f0; 
-      border-bottom: 1px solid #ddd;
-      z-index: 9; 
-      
-      margin: 0 -20px; 
-      padding: 10px 20px;
-  }
-  
-  .submenu-links {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-  }
-  
-  .submenu-link {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      padding: 5px 10px;
-      border-radius: 4px;
-      transition: background-color 0.2s;
-  }
-  
-  .submenu-link:hover {
-      background-color: #ddd;
-      color: rgb(70 120 163);
-  }
-  
-  /* --- Product Layout and Shadow Fixes (3-column enforcement) --- */
-  
-  .product-grid {
-      padding: 20px 10px;
-  }
-  
-  .product-list {
-      display: flex;
-      flex-wrap: wrap; 
-      gap: 16px; /* Space between cards */
-      /* IMPORTANT FIX: Force 3 columns using max-width */
-      justify-content: flex-start;
-  }
-  
-  .product-card {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 10px; 
-      
-      height: 400px; 
-      
-      /* CRITICAL FIX: Ensure 3 cards fit perfectly. If 3 cards don't fit, the browser wraps, causing the issue.
-         We are setting the max width of each card to ensure only 3 fit horizontally. */
-      flex: 0 0 calc(33.333% - 10.666px); 
-      max-width: calc(33.333% - 10.666px);
-      box-sizing: border-box;
-      
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-  }
-  
-  .product-card:hover {
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  }
-  
-  .product-card .product-image {
-      width: 100%;
-      height: 150px; 
-      object-fit: cover; 
-      border-radius: 4px;
-      margin-bottom: 8px;
-  }
-  
-  .product-card .product-description {
-      font-size: 0.9em;
-      color: #555;
-      flex-grow: 1; 
-      margin-bottom: 10px;
-  }
-  
-  /* --- Old ProductList.css Rules (Integrated for cleanup) --- */
-  .product-list-container {
-    z-index: 2;
-    overflow-y: auto;
-  }
-  
-  /* --- Media Queries (Preserved & Adjusted for Layout Fix) --- */
-  
-  @media screen and (max-width: 768px) {
-    .content {
-      flex-direction: column;
-      align-items: center;
-      width: 100vw;
-      height: 100vh;
+    /* FIX: Make home layout stack vertically on small screens */
+    .home-layout {
+        flex-direction: column;
+        width: 90%;
+        padding: 10px;
     }
-  
-    .landing_content {
-      margin-top: 100px;
-      margin-left: 0;
-      width: 80%; 
-      text-align: center;
+    .home-divider-center {
+        width: 80%;
+        height: 2px;
+        margin: 20px 0;
     }
-  
-    .aboutus_container {
-      margin-top: 20px; 
-      width: 80%; 
+    .home-content-left, .home-content-right {
+        flex: 0 0 100%;
+        text-align: center;
+        padding: 0;
     }
-      /* Adjust product cards for smaller screens */
-      .product-card {
-          height: 380px; 
-          flex: 0 0 calc(50% - 8px); /* 2 columns on tablet */
-          max-width: calc(50% - 8px);
-      }
+
+  .landing_content {
+    margin-top: 100px;
+    margin-left: 0;
+    width: 80%; 
+    text-align: center;
   }
-  
-  @media screen and (max-width: 480px) {
-    .landing_content {
-      margin-top: 50px; 
-      width: 90%; 
-    }
-  
-    .aboutus_container {
-      width: 90%; 
-    }
-      .product-card {
-          height: 350px; 
-          flex: 0 0 100%; /* 1 column on mobile */
-          max-width: 100%;
-      }
+
+  .aboutus_container {
+    margin-top: 20px; 
+    width: 80%; 
   }
+    /* Adjust product cards for smaller screens */
+    .product-card {
+        height: 380px; 
+        flex: 0 0 calc(50% - 8px); /* 2 columns on tablet */
+        max-width: calc(50% - 8px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+  .landing_content {
+    margin-top: 50px; 
+    width: 90%; 
+  }
+
+  .aboutus_container {
+    width: 90%; 
+  }
+    .product-card {
+        height: 350px; 
+        flex: 0 0 100%; /* 1 column on mobile */
+        max-width: 100%;
+    }
+}
