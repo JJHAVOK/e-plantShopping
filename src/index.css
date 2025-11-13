@@ -1,0 +1,17 @@
+/* index.css */
+body {
+    /* Replace 'path/to/your-background-image.jpg' with your actual image path */
+    background-image: url('https://cdn.pixabay.com/photo/2023/10/12/17/56/after-the-rain-8311416_1280.jpg'); 
+    background-size: cover; /* Ensures the image covers the whole screen */
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* You might need to adjust min-height depending on your layout */
+    min-height: 100vh; 
+    margin: 0; /* Removes default body margin */
+}
+
+/* Ensure ProductList styles override this for the product page */
+.product-grid {
+    background-color: white; /* Example: Sets a white background for the products page */
+    padding-top: 20px;
+}
