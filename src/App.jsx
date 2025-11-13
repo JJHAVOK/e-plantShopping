@@ -6,18 +6,36 @@ import './App.css';
 // Component representing the original styled home screen
 const Home = ({ onStartShopping }) => (
     <div className="home-container"> 
-        <h1 className="home-heading">Welcome to Paradise Nursery</h1>
-        <p className="home-tagline">Where Green Meets Serenity. Find the perfect plant for your home!</p>
-        <button 
-            className="get-started-button" 
-            onClick={onStartShopping}
-        >
-            Get Started
-        </button>
+        <div className="home-layout">
+            
+            {/* LEFT SECTION: Title, Tagline, and Button */}
+            <div className="home-content-left">
+                <h1 className="home-heading">Welcome to Paradise Nursery</h1>
+                <p className="home-tagline">Where Green Meets Serenity. Find the perfect plant for your home!</p>
+                <button 
+                    className="get-started-button" 
+                    onClick={onStartShopping}
+                >
+                    Get Started
+                </button>
+            </div>
+
+            {/* CENTER SECTION: Small Vertical Divider */}
+            <div className="home-divider-center"></div>
+
+            {/* RIGHT SECTION: Placeholder Text */}
+            <div className="home-content-right">
+                <p>
+                    **Paradise Nursery:** Your sanctuary for indoor greenery. We specialize in curating low-maintenance, air-purifying, and aromatic plants designed to enhance both your environment and well-being.
+                    <br /><br />
+                    Our mission is to make quality plant care accessible to everyone, from novice enthusiasts to seasoned gardeners. Explore our unique collections and let us bring tranquility to your space.
+                </p>
+            </div>
+        </div>
     </div>
 );
 
-// Main App component that manages the view
+// Main App component that manages the view (No functional changes here)
 function App() {
     const [isProductsModalOpen, setIsProductsModalOpen] = useState(false); 
     const [isCartModalOpen, setIsCartModalOpen] = useState(false); 
@@ -25,38 +43,33 @@ function App() {
 
     const handleOpenProductsModal = () => {
         setIsProductsModalOpen(true);
-        setIsCartModalOpen(false); // Ensure cart modal is closed
+        setIsCartModalOpen(false); 
     };
     
-    // Handler to open the cart modal from the ProductList component's navbar
     const handleOpenCartModal = () => {
-        setIsProductsModalOpen(false); // Close products modal
-        setIsCartModalOpen(true); // Open cart modal
+        setIsProductsModalOpen(false); 
+        setIsCartModalOpen(true); 
     };
     
-    // Universal close function (used by clicking outside or the 'X' button)
     const handleCloseModal = () => {
         setIsProductsModalOpen(false);
         setIsCartModalOpen(false);
     };
     
-    // Handler for the Home link
     const handleHomeClick = () => {
-        handleCloseModal(); // Close any open modal
+        handleCloseModal(); 
         setCurrentView('home');
     };
 
-    // Handler for "Continue Shopping" button inside CartItem
     const handleContinueShopping = () => {
         handleCloseModal(); 
-        handleOpenProductsModal(); // Re-open the products modal
+        handleOpenProductsModal();
     }
     
     let content;
     if (currentView === 'home') {
         content = <Home onStartShopping={handleOpenProductsModal} />; 
     } else {
-        // Default to Home view
         content = <Home onStartShopping={handleOpenProductsModal} />;
     }
 
@@ -71,7 +84,6 @@ function App() {
                         className="modal-content" 
                         onClick={e => e.stopPropagation()}
                     >
-                        {/* X close button */}
                         <button className="modal-close-btn" onClick={handleCloseModal}>&times;</button>
                         
                         <ProductList 
@@ -89,7 +101,6 @@ function App() {
                         className="modal-content" 
                         onClick={e => e.stopPropagation()}
                     >
-                        {/* X close button */}
                         <button className="modal-close-btn" onClick={handleCloseModal}>&times;</button>
                         
                         <CartItem 
